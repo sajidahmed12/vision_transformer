@@ -1,4 +1,5 @@
-# Vision Transformer and MLP-Mixer Architectures
+###### Forked Repo from Google-Research
+# Vision Transformer and MLP-Mixer Architectures 
 
 In this repository we release models from the papers
 
