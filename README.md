@@ -15,6 +15,15 @@ The models were pre-trained on the [ImageNet](http://www.image-net.org/) and
 fine-tuning the released models in
 [JAX](https://jax.readthedocs.io)/[Flax](http://flax.readthedocs.io).
 
+The models from this codebase were originally trained in
+https://github.com/google-research/big_vision/
+where you can find more advanced code (e.g. multi-host training), as well as
+some of the original training scripts (e.g.
+[configs/vit_i21k.py](https://github.com/google-research/big_vision/blob/main/big_vision/configs/vit_i21k.py)
+for pre-training a ViT, or
+[configs/transfer.py](https://github.com/google-research/big_vision/blob/main/big_vision/configs/transfer.py)
+for transfering a model).
+
 Table of contents:
 
 - [Vision Transformer and MLP-Mixer Architectures](#vision-transformer-and-mlp-mixer-architectures)
@@ -78,7 +87,7 @@ amount of data to fine-tune on. For details see the
 
 ## Installation
 
-Make sure you have `Python>=3.6` installed on your machine.
+Make sure you have `Python>=3.10` installed on your machine.
 
 Install JAX and python dependencies by running:
 
@@ -196,7 +205,7 @@ The model filenames (without the `.npz` extension) correspond to the
 - [`gs://vit_models/imagenet21k`] - Models pre-trained on ImageNet-21k.
 - [`gs://vit_models/imagenet21k+imagenet2012`] - Models pre-trained on
   ImageNet-21k and fine-tuned on ImageNet.
-- [`gs://vit_models/imagenet21k/augreg`] - Models pre-trained on ImageNet-21k,
+- [`gs://vit_models/augreg`] - Models pre-trained on ImageNet-21k,
   applying varying amounts of [AugReg]. Improved performance.
 - [`gs://vit_models/sam`] - Models pre-trained on ImageNet with [SAM].
 - [`gs://vit_models/gsam`] - Models pre-trained on ImageNet with [GSAM].
@@ -319,6 +328,11 @@ https://colab.research.google.com/github/google-research/vision_transformer/blob
 Note that none of above models support multi-lingual inputs yet, but we're
 working on publishing such models and will update this repository once they
 become available.
+
+This repository only contains evaluation code for LiT models. You can find the
+training code in the `big_vision` repository:
+
+https://github.com/google-research/big_vision/tree/main/big_vision/configs/proj/image_text
 
 Expected zeroshot results from [`model_cards/lit.md`] (note that the zeroshot
 evaluation is slightly different from the simplified evaluation in the Colab):
@@ -512,7 +526,7 @@ In reverse chronological order:
 
 - 2021-07-02: Added the "When Vision Transformers Outperform
   ResNets..." paper
-  
+
 - 2021-07-02: Added [SAM](https://arxiv.org/abs/2010.01412)
   (Sharpness-Aware Minimization) optimized ViT and MLP-Mixer checkpoints.
 
